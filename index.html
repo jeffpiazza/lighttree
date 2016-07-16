@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Lighttree by jeffpiazza</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Lighttree</h1>
+        <h2>Pinewood derby light tree, powered by a Raspberry Pi</h2>
+        <a href="https://github.com/jeffpiazza/lighttree" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <p>I've been envious of the "Christmas tree light" systems I've seen, that flash lights in sequence on a pole just before triggering a race.  The "DragMaster" light tree is cute, but pricey: <a href="http://besttrack.com/LightTree.html">http://besttrack.com/LightTree.html</a>.  This summer I decided to build my own light tree for a lot less.  Here's the result:</p>
+
+<p></p>
+
+<p>Physically, the tree starts as a 6-foot 4x4 vinyl fence post, to which ten light sockets are mounted.  On the back there's an arcade game pushbutton ("ready" button), two RCA jacks, and a couple of access cut-outs.  A handheld pushbutton switch plugs in to one RCA jack, and initiates the starting sequence.  The other RCA jack connects to the electrically-operated starting gate on the track.  The base is a piece of 2x4, cut to fit just inside the post, and mounted to a piece of plywood.  The base is attached to the post by a pair of 1/4" bolts that pass through holes in the bottom of the post into 1/4" T-nuts in the 2x4:</p>
+
+<p></p>
+
+<p>Internally, there's a Raspberry Pi and a relay board driving the lights.  By some measure, the RPi is way overkill for driving some relays in sequence, but it's so inexpensive and provides so much flexibility, it's hard to make a case for building discrete logic for this application.</p>
+
+<p>The RPi and relay board are mounted to a narrow piece of hardboard that hangs at the top of the post; two small sections of aluminum angle mounted inside the post provide a slot for it to hang in.  The RPi could be removed for the off-season if desired, although reconnecting all the header pins would be tedious and painstaking.  Some photos of the control board (before the final wire-up) and some wiring details:</p>
+
+<p></p>
+
+<p>The micro-USB cord that provides power to the RPi presented a little bit of a clearance issue; I ended up ordering a right-angle micro-USB cable to resolve it.  Alternatively, I could have mounted the RPi a little off-center on the control board to allow some extra room for a normal cable.</p>
+
+<p>Other than the post and the RPi, I sourced most everying I used from ebay, including the relay board ($8), the sockets (10/$8.50) LED light bulbs (10/$18), jumper wires, RCA jacks, and terminal strips.  The bulbs and sockets are E27, which is compatible-in-practice with US-standard E26 bulbs and sockets (the diameter is putatively 1mm different, but either seems to work with the other).</p>
+
+<p>The RPi is configured to run a python script on start-up.  During initialization, the script flashes each pair of lights in turn, and then enters its main event loop.  Pressing the "ready" button on the pole runs a get-your-attention light sequence; pressing the hand-held "start" button sequences the lights and then activates the track start gate.  I thought about adding a flag so that the "start" button wouldn't operate until the "ready" button had been pressed, but for now I've left them independent.</p>
+
+<p>Being a fully-functional computer, the RPi could be connected to the local network, and the light tree and starting sequence could potentially be triggered remotely.  I don't have a use case for that, but maybe that's a valuable capability for someone else.</p>
+
+<p>I've posted the script and wiring diagrams at    LINK  <a href="http://github.com/jeffpiazza/xmastree">http://github.com/jeffpiazza/xmastree</a></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/jeffpiazza/lighttree/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/jeffpiazza/lighttree/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/jeffpiazza/lighttree"></a> is maintained by <a href="https://github.com/jeffpiazza">jeffpiazza</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
